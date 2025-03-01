@@ -1,4 +1,4 @@
-#include "find.h"
+п»ї#include "find.h"
 #include "definitions.h"
 #include "print.h"
 #include <iostream>
@@ -7,31 +7,31 @@ using namespace std;
 
 void findContact(Person* list, int n) {
 	char nameGiven[MAX];
-	cout << "Введите фамилию: ";
+	cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: ";
 	cin >> nameGiven;
 	int k = 0;
 	for (int i = 0; i < n; i++) {
 		if (strcmp(list[i].secondName, nameGiven) == 0) {
 			if (k == 0) {
-				cout << "Результаты поиска:\n";
+				cout << "Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР°:\n";
 			}
 			print(&list[i]);
 			k++;
 		}
 	}
 	if (k == 0) {
-		cout << "Контакты не найдены\n";
+		cout << "РљРѕРЅС‚Р°РєС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹\n";
 	}
 	system("pause");
-	system("cls"); //отчистка экрана
+	system("cls"); //РѕС‚С‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
 }
 
 void findBirthdays(Person* list, int n) {
-	//ввод месяца
+	//РІРІРѕРґ РјРµСЃСЏС†Р°
 	int month;
-	cout << "Введите номер месяца: ";
+	cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РјРµСЃСЏС†Р°: ";
 	cin >> month;
-	//подсчет количества контактов в этом месяце
+	//РїРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РєРѕРЅС‚Р°РєС‚РѕРІ РІ СЌС‚РѕРј РјРµСЃСЏС†Рµ
 	int kol = 0;
 	for (int i = 0; i < n; i++) {
 		if (list[i].birthday.month == month) {
@@ -39,10 +39,10 @@ void findBirthdays(Person* list, int n) {
 		}
 	}
 	if (kol == 0) {
-		cout << "В этом месяце именниников нет!\n";
+		cout << "Р’ СЌС‚РѕРј РјРµСЃСЏС†Рµ РёРјРµРЅРЅРёРЅРёРєРѕРІ РЅРµС‚!\n";
 		return;
 	}
-	//выделение динамической памяти и заполнение массива указателей
+	//РІС‹РґРµР»РµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё Рё Р·Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° СѓРєР°Р·Р°С‚РµР»РµР№
 	Person** ptr = new Person * [kol];
 	int j = 0;
 	for (int i = 0; i < n; i++) {
@@ -50,7 +50,7 @@ void findBirthdays(Person* list, int n) {
 			ptr[j++] = &list[i];
 		}
 	}
-	//сортировка массива указателей
+	//СЃРѕСЂС‚РёСЂРѕРІРєР° РјР°СЃСЃРёРІР° СѓРєР°Р·Р°С‚РµР»РµР№
 	for (int k = kol - 1; k > 0; k--) {
 		for (int i = 0; i < k; i++) {
 			if (ptr[i]->birthday.day > ptr[i + 1]->birthday.day) {
@@ -60,13 +60,13 @@ void findBirthdays(Person* list, int n) {
 			}
 		}
 	}
-	//вывод контактов
-	cout << "Именниники в этом месяце:\n";
+	//РІС‹РІРѕРґ РєРѕРЅС‚Р°РєС‚РѕРІ
+	cout << "РРјРµРЅРЅРёРЅРёРєРё РІ СЌС‚РѕРј РјРµСЃСЏС†Рµ:\n";
 	for (int i = 0; i < kol; i++) {
 		print(ptr[i]);
 	}
-	//удаление массива указателей
+	//СѓРґР°Р»РµРЅРёРµ РјР°СЃСЃРёРІР° СѓРєР°Р·Р°С‚РµР»РµР№
 	delete[] ptr;
 	system("pause");
-	system("cls"); //отчистка экрана
+	system("cls"); //РѕС‚С‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
 }

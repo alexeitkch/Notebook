@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "definitions.h"
 void print(Person*);
 void printList(Person*, int);

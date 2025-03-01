@@ -1,18 +1,18 @@
-#include "print.h"
+п»ї#include "print.h"
 #include "definitions.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
-//вывод на консоль данных одного человека
+//РІС‹РІРѕРґ РЅР° РєРѕРЅСЃРѕР»СЊ РґР°РЅРЅС‹С… РѕРґРЅРѕРіРѕ С‡РµР»РѕРІРµРєР°
 void print(Person* item) {
-	cout << item->secondName << " " << item->name << " тел.: " << item->telefon;
+	cout << item->secondName << " " << item->name << " С‚РµР».: " << item->telefon;
 	cout << "\n\t" << setw(2) << setfill('0') << item->birthday.day << "." << setw(2) << setfill('0') << item->birthday.month << "." << item->birthday.year << endl;
 }
 
 void printList(Person* list, int n) {
-	system("cls"); //отчистка экрана
-	cout << "Содержание записной книжки:\n";
+	system("cls"); //РѕС‚С‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
+	cout << "РЎРѕРґРµСЂР¶Р°РЅРёРµ Р·Р°РїРёСЃРЅРѕР№ РєРЅРёР¶РєРё:\n";
 	for (int i = 0; i < n; i++) {
 		print(&list[i]);
 	}
@@ -20,15 +20,15 @@ void printList(Person* list, int n) {
 }
 
 void printSort(Person* list, int n) {
-	system("cls"); //отчистка экрана
-	cout << "Сортировка по фамилии\n";
-	//создание и инициализация массива указателей
+	system("cls"); //РѕС‚С‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
+	cout << "РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ С„Р°РјРёР»РёРё\n";
+	//СЃРѕР·РґР°РЅРёРµ Рё РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РјР°СЃСЃРёРІР° СѓРєР°Р·Р°С‚РµР»РµР№
 	Person** ptr = new Person * [n];
 	for (int i = 0; i < n; i++) {
 		ptr[i] = &list[i];
 	}
 
-	//сортировака массива указателеей
+	//СЃРѕСЂС‚РёСЂРѕРІР°РєР° РјР°СЃСЃРёРІР° СѓРєР°Р·Р°С‚РµР»РµРµР№
 	for (int k = n - 1; k > 0; k--) {
 		for (int i = 0; i < k; i++) {
 			if (strcmp(ptr[i]->secondName, ptr[i + 1]->secondName) > 0) {
@@ -39,11 +39,11 @@ void printSort(Person* list, int n) {
 		}
 	}
 
-	//вывод на консоль
+	//РІС‹РІРѕРґ РЅР° РєРѕРЅСЃРѕР»СЊ
 	for (int i = 0; i < n; i++) {
 		print(ptr[i]);
 	}
 
-	//удаление массива указателей
+	//СѓРґР°Р»РµРЅРёРµ РјР°СЃСЃРёРІР° СѓРєР°Р·Р°С‚РµР»РµР№
 	delete[] ptr;
 }

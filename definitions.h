@@ -1,7 +1,7 @@
-#pragma once
+п»ї#pragma once
 #define MAX 128
 using namespace std;
-//объявление структур
+//РѕР±СЉСЏРІР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂ
 struct Date {
 	int day;
 	int month;
