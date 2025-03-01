@@ -11,6 +11,8 @@ void print(Person* item) {
 }
 
 void printList(Person* list, int n) {
+	system("cls"); //отчистка экрана
+	cout << "Содержание записной книжки:\n";
 	for (int i = 0; i < n; i++) {
 		print(&list[i]);
 	}
@@ -18,6 +20,7 @@ void printList(Person* list, int n) {
 }
 
 void printSort(Person* list, int n) {
+	system("cls"); //отчистка экрана
 	cout << "Сортировка по фамилии\n";
 	//создание и инициализация массива указателей
 	Person** ptr = new Person * [n];

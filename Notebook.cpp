@@ -46,7 +46,26 @@ int menu() {
 
 //функция завершения работы
 void finish(Person* list, int n) {
-	cout << "Завершение программы\n";
+	cout << "Завершение работы\n";
+	cout << "Сохранить в файл текущие контакты? (Y/N) ";
+	char vyb;
+	cin >> vyb;
+	if (vyb == 'y' || vyb == 'Y' || vyb == 'у' || vyb == 'У') {
+		//открытие файла data.txt
+		FILE* output = NULL;
+		if (fopen_s(&output, "data.txt", "w") != 0) {
+			cout << "Ошибка открытия файла для записи\n";
+			return;
+		}
+		fprintf(output, "%d\n", n);
+		for (int i = 0; i < n; i++) {
+			fprintf(output, "%s;%s;%s;%d/%d/%d\n", list[i].secondName, list[i].name, list[i].telefon, list[i].birthday.day, list[i].birthday.month, list[i].birthday.year);
+		}
+		//закрытие файла
+		if (fclose(output) != 0) {
+			cout << "Ошибка закрытия файла для записи\n";
+		}
+	}
 }
 
 int main() {

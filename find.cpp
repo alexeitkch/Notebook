@@ -22,6 +22,8 @@ void findContact(Person* list, int n) {
 	if (k == 0) {
 		cout << "Контакты не найдены\n";
 	}
+	system("pause");
+	system("cls"); //отчистка экрана
 }
 
 void findBirthdays(Person* list, int n) {
@@ -65,4 +67,6 @@ void findBirthdays(Person* list, int n) {
 	}
 	//удаление массива указателей
 	delete[] ptr;
+	system("pause");
+	system("cls"); //отчистка экрана
 }
